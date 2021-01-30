@@ -2,15 +2,15 @@
 
 ## 1. Create a folder in your file system
 
-    - create a folder in your file system that you can clone both repos.
+- create a folder in your file system that you can clone both repos.
 
 ## 2. Open 2 terminals
 
-    - after you open both terminals, cd to the folder you would like to clone the projects to.
-    - to clone the client in one of your terminals, run `git clone https://github.com/tayrotayro/interview-client.git`
-    - to clone the server in your other terminal, run `git clone https://github.com/tayrotayro/interview-server.git`
-    - run `npm install` in both terminals
-    - run `npm start` in both terminals
+- after you open both terminals, cd to the folder you would like to clone the projects to.
+- to clone the client in one of your terminals, run `git clone https://github.com/tayrotayro/interview-client.git`
+- to clone the server in your other terminal, run `git clone https://github.com/tayrotayro/interview-server.git`
+- run `npm install` in both terminals
+- run `npm start` in both terminals
 
 ## 3. Open localhost:3000
 
