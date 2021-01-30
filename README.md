@@ -2,7 +2,7 @@
 
 ## 1. Create a folder in your file system
 
-- create a folder in your file system that you can clone both repos.
+- create a folder in your file system that you can clone both repos too.
 
 ## 2. Open 2 terminals
 
