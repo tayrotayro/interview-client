@@ -1,53 +1,36 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getNum, selectNum } from './numSlice';
-//import axios from "axios";
+import { getNum } from './numSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
     const [sum, setSum] = useState()
     //const [number, setNum] = useState()
     //const [error, setErr] = useState()
-
+    const { value } = useSelector((state) => state.num)
     const dispatch = useDispatch()
 
-
-    // function submitNumber() {
-    //     axios.post('http://localhost:9000/api/mult', {
-    //         value: sum
-    //     })
-    //         .then(result => {
-    //             const error = result.data.error;
-    //             setErr(error);
-    //             const number = result.data.data;
-    //             setNum(number);
-
-    //         }).catch(err => console.log(err))
-
-    // }
-
-    function numSub(val) {
-
-        // eslint-disable-next-line no-undef
-        const response = dispatch(getNum({ value: val }))
-        console.log(response)
-
-
+    const handleUpdateValue = async (val) => {
+        const resultAction = await dispatch(getNum({ value: val }))
+        if (getNum.fulfilled.match(resultAction)) {
+            // user will have a type signature of User as we passed that as the Returned parameter in createAsyncThunk
+            const value = resultAction.payload
+            toast('success', `Updated ${value} ${value}`)
+            return value
+        } else {
+            return "error"
+        }
     }
-
-    const num = useSelector(selectNum)
-    console.log(num)
 
     return (
         <div style={wrap}>
             <h1 style={header}>Welcome to Taylor's Interview App</h1>
             <h3 style={inst}>Instructions:</h3> <p style={words}>Please input a number and click submit. The app will return result of that number multiplied by 2.</p>
             <input style={input} value={sum} onChange={(e) => setSum(e.target.value)} />
-            <button style={button} onClick={(e) => numSub(sum)}>Submit</button>
+            <button style={button} onClick={(e) => handleUpdateValue(sum)}>Submit</button>
 
-            <h2>{num}</h2>
-            {/* { error &&
-                <h2>{error}</h2>
-            } */}
+            <h2>{value}</h2>
         </div>
     )
 }
