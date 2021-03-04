@@ -19,7 +19,7 @@ export default function Home() {
             toast('success', `Updated ${value} ${value}`)
             return value
         } else {
-            return "error"
+
         }
     }
 
@@ -31,6 +31,7 @@ export default function Home() {
             <button style={button} onClick={(e) => handleUpdateValue(sum)}>Submit</button>
 
             <h2>{value}</h2>
+
         </div>
     )
 }

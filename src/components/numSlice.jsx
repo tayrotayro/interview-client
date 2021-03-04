@@ -14,12 +14,15 @@ export const getNum = createAsyncThunk(
       const response = await axios.post('http://localhost:9000/api/mult', {
         value: value
       })
-      //console.log(response.data.data)
-      return (
-        response.data.data
-      )
+      console.log(response.data)
+      if (!response.data.data) {
+        return response.data.error
+      } else {
+        return response.data.data
+      }
     }
     catch (err) {
+      console.log(err.response.data)
       return err.response.data;
     }
 
@@ -44,6 +47,7 @@ const numSlice = createSlice({
     },
     [getNum.rejected]: (state, action) => {
       state.status = 'failed'
+      state.error = action.payload
     },
   },
 })
